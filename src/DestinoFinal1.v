@@ -93,31 +93,114 @@ or  ors4    (S3, cable[36], cable[37], cable[38], cable[39]);
 //U Y V LOGICA SELECTORA PARA MUX
 
 
-module control_logic (
+
+
+module SISTEMA_MUX (
     input A, B, C, D,
+
+    input A0, B0, C0, D0,
+    input A1, B1, C1, D1,
+    input A2, B2, C2, D2,
+    input A3, B3, C3, D3,
+    input A4, B4, C4, D4,
+
+    output Y0, Y1, Y2, Y3,
+    output FLAG,
     output U, V
 );
 
-wire [8:0] cable;
+wire [70:0] cable;
 
-// COMPUERTAS NOT
-not notB (cable[0], B);
-not notD (cable[1], D);
-not notA (cable[2], A);
+// =====================================
+// CONTROL LOGIC - KARNAUGH
+// =====================================
 
-// V = AB' + CD + BD
-and and1 (cable[3], A, cable[0]);
-and and2 (cable[4], C, D);
-and and3 (cable[5], B, D);
+// INVERSORES
+not notB (cable[40], B);
+not notD (cable[41], D);
+not notA (cable[42], A);
 
-or or1 (V, cable[3], cable[4], cable[5]);
+// U = AB' + CD + BD
+and and1 (cable[43], A, cable[40]);
+and and2 (cable[44], C, D);
+and and3 (cable[45], B, D);
 
-// U = CD' + A'B + AC
-and and4 (cable[6], C, cable[1]);
-and and5 (cable[7], cable[2], B);
-and and6 (cable[8], A, C);
+or or1 (U, cable[43], cable[44], cable[45]);
 
-or or2 (U, cable[6], cable[7], cable[8]);
+// V = CD' + A'B + AC
+and and4 (cable[46], C, cable[41]);
+and and5 (cable[47], cable[42], B);
+and and6 (cable[48], A, C);
+
+or or2 (V, cable[46], cable[47], cable[48]);
+
+// =====================================
+// SELECTORES
+// SEL0 = U
+// SEL1 = V
+// =====================================
+
+not notSEL0 (cable[49], U);
+not notSEL1 (cable[50], V);
+
+// =====================================
+// MUX 1 - SALIDA Y0
+// =====================================
+
+and and7  (cable[51], A0, cable[50], cable[49]);
+and and8  (cable[52], B0, cable[50], U);
+and and9  (cable[53], C0, V, cable[49]);
+and and10 (cable[54], D0, V, U);
+
+or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
+
+// =====================================
+// MUX 2 - SALIDA Y1
+// =====================================
+
+and and11 (cable[55], A1, cable[50], cable[49]);
+and and12 (cable[56], B1, cable[50], U);
+and and13 (cable[57], C1, V, cable[49]);
+and and14 (cable[58], D1, V, U);
+
+or or4 (Y1, cable[55], cable[56], cable[57], cable[58]);
+
+// =====================================
+// MUX 3 - SALIDA Y2
+// =====================================
+
+and and15 (cable[59], A2, cable[50], cable[49]);
+and and16 (cable[60], B2, cable[50], U);
+and and17 (cable[61], C2, V, cable[49]);
+and and18 (cable[62], D2, V, U);
+
+or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
+
+// =====================================
+// MUX 4 - SALIDA Y3
+// =====================================
+
+and and19 (cable[63], A3, cable[50], cable[49]);
+and and20 (cable[64], B3, cable[50], U);
+and and21 (cable[65], C3, V, cable[49]);
+and and22 (cable[66], D3, V, U);
+
+or or6 (Y3, cable[63], cable[64], cable[65], cable[66]);
+
+// =====================================
+// MUX 5 - CARRY
+// =====================================
+
+and and23 (cable[67], A4, cable[50], cable[49]);
+and and24 (cable[68], B4, cable[50], U);
+and and25 (cable[69], C4, V, cable[49]);
+and and26 (cable[70], D4, V, U);
+
+or or7 (FLAG, cable[67], cable[68], cable[69], cable[70]);
+
+endmodule
+
+
 
 
 
