@@ -4,7 +4,7 @@
 
 Nombre: Bryan Miguel Santana Varela  
 Matrícula: 2024-0702  
-Reto: Pendiente de asignar
+
 
 ## Descripción del proyecto
 
