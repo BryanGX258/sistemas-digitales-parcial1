@@ -147,9 +147,9 @@ not notSEL1 (cable[50], V);
 // MUX 1 - SALIDA Y0
 // =====================================
 
-and and7  (cable[51], A0, cable[50], cable[49]);
+and and7  (cable[51], S0, cable[50], cable[49]);
 and and8  (cable[52], B0, cable[50], U);
-and and9  (cable[53], C0, V, cable[49]);
+and and9  (cable[53], S0, V, cable[49]);
 and and10 (cable[54], D0, V, U);
 
 or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
@@ -158,9 +158,9 @@ or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
 // MUX 2 - SALIDA Y1
 // =====================================
 
-and and11 (cable[55], A1, cable[50], cable[49]);
+and and11 (cable[55], S0, cable[50], cable[49]);
 and and12 (cable[56], B1, cable[50], U);
-and and13 (cable[57], C1, V, cable[49]);
+and and13 (cable[57], S0, V, cable[49]);
 and and14 (cable[58], D1, V, U);
 
 or or4 (Y1, cable[55], cable[56], cable[57], cable[58]);
@@ -169,9 +169,9 @@ or or4 (Y1, cable[55], cable[56], cable[57], cable[58]);
 // MUX 3 - SALIDA Y2
 // =====================================
 
-and and15 (cable[59], A2, cable[50], cable[49]);
+and and15 (cable[59], S0, cable[50], cable[49]);
 and and16 (cable[60], B2, cable[50], U);
-and and17 (cable[61], C2, V, cable[49]);
+and and17 (cable[61], S0, V, cable[49]);
 and and18 (cable[62], D2, V, U);
 
 or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
@@ -180,9 +180,9 @@ or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
 // MUX 4 - SALIDA Y3
 // =====================================
 
-and and19 (cable[63], A3, cable[50], cable[49]);
+and and19 (cable[63], S0, cable[50], cable[49]);
 and and20 (cable[64], B3, cable[50], U);
-and and21 (cable[65], C3, V, cable[49]);
+and and21 (cable[65], S0, V, cable[49]);
 and and22 (cable[66], D3, V, U);
 
 or or6 (Y3, cable[63], cable[64], cable[65], cable[66]);
@@ -191,9 +191,9 @@ or or6 (Y3, cable[63], cable[64], cable[65], cable[66]);
 // MUX 5 - CARRY
 // =====================================
 
-and and23 (cable[67], A4, cable[50], cable[49]);
+and and23 (cable[67], Cout, cable[50], cable[49]);
 and and24 (cable[68], B4, cable[50], U);
-and and25 (cable[69], C4, V, cable[49]);
+and and25 (cable[69], Cout, V, cable[49]);
 and and26 (cable[70], D4, V, U);
 
 or or7 (FLAG, cable[67], cable[68], cable[69], cable[70]);
