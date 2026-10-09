@@ -9,7 +9,7 @@ Reto: Pendiente de asignar
 ## Descripción del proyecto
 
 Este repositorio contiene el desarrollo del primer parcial de Sistemas Digitales con Verilog(SUMA,RESTA,COMPARADOR
-XOR).
+XOR DE 4 BITS).
 
 ## Estado del proyecto
 
