@@ -90,6 +90,35 @@ and ands4_3 (cable[38], A3, cable[31], cable[32]);
 and ands4_4 (cable[39], A3, BX3, C3);
 or  ors4    (S3, cable[36], cable[37], cable[38], cable[39]);
 
+//U Y V LOGICA SELECTORA PARA MUX
+
+
+module control_logic (
+    input A, B, C, D,
+    output U, V
+);
+
+wire [8:0] cable;
+
+// COMPUERTAS NOT
+not notB (cable[0], B);
+not notD (cable[1], D);
+not notA (cable[2], A);
+
+// V = AB' + CD + BD
+and and1 (cable[3], A, cable[0]);
+and and2 (cable[4], C, D);
+and and3 (cable[5], B, D);
+
+or or1 (V, cable[3], cable[4], cable[5]);
+
+// U = CD' + A'B + AC
+and and4 (cable[6], C, cable[1]);
+and and5 (cable[7], cable[2], B);
+and and6 (cable[8], A, C);
+
+or or2 (U, cable[6], cable[7], cable[8]);
+
 
 
 endmodule
