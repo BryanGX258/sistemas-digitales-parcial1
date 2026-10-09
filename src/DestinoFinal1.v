@@ -5,6 +5,8 @@ module DestinoFinal1 ( input A0, A1, A2, A3,
     output Cout
 );
 
-
+wire [120:0] cable;
+wire BX0, BX1, BX2, BX3;
+wire C1, C2, C3;
 
 endmodule
