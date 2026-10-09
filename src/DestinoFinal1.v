@@ -147,9 +147,9 @@ not notSEL1 (cable[50], V);
 // MUX 1 - SALIDA Y0
 // =====================================
 
-and and7  (cable[51], S0, cable[50], cable[49]);
+and and7  (cable[51], S0, cable[50], cable[49]); //suma
 and and8  (cable[52], B0, cable[50], U);
-and and9  (cable[53], S0, V, cable[49]);
+and and9  (cable[53], S0, V, cable[49]); //suma pero con m=1 osea resta
 and and10 (cable[54], D0, V, U);
 
 or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
@@ -180,7 +180,7 @@ or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
 // MUX 4 - SALIDA Y3
 // =====================================
 
-and and19 (cable[63], S0, cable[50], cable[49]);
+and and19 (cable[63], S0, cable[50], cable[49]); 
 and and20 (cable[64], B3, cable[50], U);
 and and21 (cable[65], S0, V, cable[49]);
 and and22 (cable[66], D3, V, U);
