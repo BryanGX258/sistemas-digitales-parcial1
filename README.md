@@ -23,14 +23,3 @@ En desarrollo.
 - `fpga/`: proyecto Gowin, restricciones, bitstream e informes.
 - `evidencias/`: fotografías y enlaces de demostración.
 
-## Simulación
-
-Las instrucciones de simulación se agregarán durante el desarrollo.
-
-## Compilación para FPGA
-
-Las instrucciones de compilación se agregarán durante el desarrollo.
-
-## Programación de la Tang Primer 25K
-
-Las instrucciones se agregarán durante el desarrollo.
