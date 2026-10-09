@@ -106,7 +106,7 @@ module SISTEMA_MUX (
 
     output Y0, Y1, Y2, Y3,
     output FLAG,
-    output U, V
+    
 );
 
 wire [70:0] cable;
