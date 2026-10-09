@@ -1,0 +1,7 @@
+*.vcd
+*.fst
+*.tmp
+*.bak
+sim.out
+build/
+__pycache__/
