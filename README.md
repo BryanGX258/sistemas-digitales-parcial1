@@ -1,13 +1,13 @@
 # Primer Parcial — Sistemas Digitales con Verilog
 
-## ALU combinacional de 4 bits con registro de resultados
+## Combinacional de 4 bits con registro de resultados
 
 **Estudiante:** Bryan Miguel Santana Varela  
 **Matrícula:** 2024-0702  
 **Carrera:** Mecatrónica — ITLA  
 **Lenguaje:** Verilog-2001 estructural  
 **FPGA:** Tang Primer 25K — Gowin GW5A-25  
-**Versión de entrega:** `v1.0-entrega`
+**Versión de entrega:** `v1.0-entrega` 
 
 ---
 
