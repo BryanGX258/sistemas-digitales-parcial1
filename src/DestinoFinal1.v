@@ -202,4 +202,70 @@ and and26 (cable[70], cable[79], V, U); // PARIDAD XOR
 or or7 (FLAG, cable[67], cable[68], cable[69], cable[70]);
 
 
+ // =====================================
+ // COMPARADOR MAYOR DE 4 BITS
+ // =====================================
+
+wire MAX0, MAX1, MAX2, MAX3;
+wire B4;
+
+// INVERSORES DE B
+not notCompB3 (cable[81], B3);
+not notCompB2 (cable[82], B2);
+not notCompB1 (cable[83], B1);
+not notCompB0 (cable[84], B0);
+
+// COMPARACION DE IGUALDAD POR BIT
+xnor xnorComp3 (cable[85], A3, B3);
+xnor xnorComp2 (cable[86], A2, B2);
+xnor xnorComp1 (cable[87], A1, B1);
+xnor xnorComp0 (cable[88], A0, B0);
+
+// COMPROBAR SI A ES MAYOR QUE B
+and andMayor3 (cable[89], A3, cable[81]);
+
+and andMayor2 (cable[90],
+    cable[85], A2, cable[82]);
+
+and andMayor1 (cable[91],
+    cable[85], cable[86], A1, cable[83]);
+
+and andMayor0 (cable[92],
+    cable[85], cable[86], cable[87], A0, cable[84]);
+
+or orMayor (cable[93],
+    cable[89], cable[90], cable[91], cable[92]);
+
+// IGUALDAD A = B
+and andIgual (B4,
+    cable[85], cable[86], cable[87], cable[88]);
+
+// INVERSOR DEL COMPARADOR
+not notMayor (cable[94], cable[93]);
+
+// =====================================
+// SELECCION DEL NUMERO MAYOR
+// =====================================
+
+// BIT 0
+and andMax0A (cable[95], A0, cable[93]);
+and andMax0B (cable[96], B0, cable[94]);
+or orMax0 (MAX0, cable[95], cable[96]);
+
+// BIT 1
+and andMax1A (cable[97], A1, cable[93]);
+and andMax1B (cable[98], B1, cable[94]);
+or orMax1 (MAX1, cable[97], cable[98]);
+
+// BIT 2
+and andMax2A (cable[99], A2, cable[93]);
+and andMax2B (cable[100], B2, cable[94]);
+or orMax2 (MAX2, cable[99], cable[100]);
+
+// BIT 3
+and andMax3A (cable[101], A3, cable[93]);
+and andMax3B (cable[102], B3, cable[94]);
+or orMax3 (MAX3, cable[101], cable[102]);
+
+
 endmodule
