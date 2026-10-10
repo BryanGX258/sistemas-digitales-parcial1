@@ -1,9 +1,7 @@
 module DestinoFinal1 ( 
     input A0, A1, A2, A3,
     input B0, B1, B2, B3,
-    input M,   // M=0 suma, M=1 resta(inversion de las xor del sumador)
     input A, B, C, D, // selector de operacion SUMA,RESTA,COMPARADOR, XOR
-    output S0, S1, S2, S3, // (colocar decodificador pendiente)
     output Cout,
     output Y0, Y1, Y2, Y3, //salidas del mux 4x1
     output FLAG, //carry mux
@@ -96,21 +94,10 @@ or  ors4    (S3, cable[36], cable[37], cable[38], cable[39]);
 
 //U Y V LOGICA SELECTORA PARA MUX
 
+not notV (cable[71], V);
+not notU (cable[72], U);
 
-
-
-module SISTEMA_MUX (
-    
-    input A0, B0, C0, D0,
-    input A1, B1, C1, D1,
-    input A2, B2, C2, D2,
-    input A3, B3, C3, D3,
-    input A4, B4, C4, D4,
-
-    
-);
-
-wire [70:0] cable;
+and andM (M, cable[71], cable[72]); //V,U = 0 M SERA 1 Y ACTIVARA RESTA
 
 // =====================================
 // CONTROL LOGIC - KARNAUGH
