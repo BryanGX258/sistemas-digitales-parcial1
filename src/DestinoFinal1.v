@@ -270,5 +270,22 @@ and andMax3A (cable[101], A3, cable[93]);
 and andMax3B (cable[102], B3, cable[94]);
 or orMax3 (MAX3, cable[101], cable[102]);
 
+result_register REGISTRO1 ( // ven papa te estoy llamando ( ͡° ͜ʖ ͡° )
+    .CLK(CLK),
+    .EN(EN),
+    .RESET(RESET),
+
+    .Y0(Y0),
+    .Y1(Y1),
+    .Y2(Y2),
+    .Y3(Y3),
+    .FLAG(FLAG),
+
+    .Q0(Q0),
+    .Q1(Q1),
+    .Q2(Q2),
+    .Q3(Q3),
+    .FLAG_Q(FLAG_Q)
+);
 
 endmodule
