@@ -199,8 +199,8 @@ or or6 (Y3, cable[63], cable[64], cable[65], cable[66]);
 // =====================================
 // MUX 5 - CARRY / FLAG
 // =====================================
-
-and and23 (cable[67], Cout, cable[50], cable[49]);
+not notBorrow (cable[80], Cout);
+and and23 (cable[67], cable[80], cable[50], cable[49]);
 and and24 (cable[68], B4, cable[50], U);
 and and25 (cable[69], Cout, V, cable[49]);
 and and26 (cable[70], cable[79], V, U); // PARIDAD XOR
