@@ -5,7 +5,7 @@ module DestinoFinal1 (
     output Cout,
     output Y0, Y1, Y2, Y3, //salidas del mux 4x1
     output FLAG, //carry mux
-    output U, V, 
+    output U, V 
     
 );
 
@@ -13,7 +13,8 @@ module DestinoFinal1 (
 wire [120:0] cable;
 wire BX0, BX1, BX2, BX3;
 wire C1, C2, C3;
-
+wire M;
+wire S0, S1, S2, S3;
 // XOR para invertir B cuando M=1
 xor xorb0 (BX0, B0, M);
 xor xorb1 (BX1, B1, M);
@@ -92,6 +93,20 @@ and ands4_3 (cable[38], A3, cable[31], cable[32]);
 and ands4_4 (cable[39], A3, BX3, C3);
 or  ors4    (S3, cable[36], cable[37], cable[38], cable[39]);
 
+
+ 
+ // XOR DE 4 BITS ENTRE A Y B
+
+xor xor0 (cable[73], A0, B0);
+xor xor1 (cable[74], A1, B1);
+xor xor2 (cable[75], A2, B2);
+xor xor3 (cable[76], A3, B3);
+
+// PARIDAD DE XOR
+xor xor4 (cable[77], cable[73], cable[74]);
+xor xor5 (cable[78], cable[75], cable[76]);
+xor xor6 (cable[79], cable[77], cable[78]);
+
 //U Y V LOGICA SELECTORA PARA MUX
 
 not notV (cable[71], V);
@@ -135,10 +150,10 @@ not notSEL1 (cable[50], V);
 // MUX 1 - SALIDA Y0
 // =====================================
 
-and and7  (cable[51], S0, cable[50], cable[49]); //suma
+and and7  (cable[51], S0, cable[50], cable[49]); // RESTA
 and and8  (cable[52], B0, cable[50], U);
-and and9  (cable[53], S0, V, cable[49]); //suma pero con m=1 osea resta
-and and10 (cable[54], D0, V, U);
+and and9  (cable[53], S0, V, cable[49]); // SUMA
+and and10 (cable[54], cable[73], V, U); // XOR
 
 or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
 
@@ -146,10 +161,10 @@ or or3 (Y0, cable[51], cable[52], cable[53], cable[54]);
 // MUX 2 - SALIDA Y1
 // =====================================
 
-and and11 (cable[55], S0, cable[50], cable[49]);
+and and11 (cable[55], S1, cable[50], cable[49]);
 and and12 (cable[56], B1, cable[50], U);
-and and13 (cable[57], S0, V, cable[49]);
-and and14 (cable[58], D1, V, U);
+and and13 (cable[57], S1, V, cable[49]);
+and and14 (cable[58], cable[74], V, U); // XOR
 
 or or4 (Y1, cable[55], cable[56], cable[57], cable[58]);
 
@@ -157,10 +172,10 @@ or or4 (Y1, cable[55], cable[56], cable[57], cable[58]);
 // MUX 3 - SALIDA Y2
 // =====================================
 
-and and15 (cable[59], S0, cable[50], cable[49]);
+and and15 (cable[59], S2, cable[50], cable[49]);
 and and16 (cable[60], B2, cable[50], U);
-and and17 (cable[61], S0, V, cable[49]);
-and and18 (cable[62], D2, V, U);
+and and17 (cable[61], S2, V, cable[49]);
+and and18 (cable[62], cable[75], V, U); // XOR
 
 or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
 
@@ -168,28 +183,23 @@ or or5 (Y2, cable[59], cable[60], cable[61], cable[62]);
 // MUX 4 - SALIDA Y3
 // =====================================
 
-and and19 (cable[63], S0, cable[50], cable[49]); 
+and and19 (cable[63], S3, cable[50], cable[49]);
 and and20 (cable[64], B3, cable[50], U);
-and and21 (cable[65], S0, V, cable[49]);
-and and22 (cable[66], D3, V, U);
+and and21 (cable[65], S3, V, cable[49]);
+and and22 (cable[66], cable[76], V, U); // XOR
 
 or or6 (Y3, cable[63], cable[64], cable[65], cable[66]);
 
 // =====================================
-// MUX 5 - CARRY
+// MUX 5 - CARRY / FLAG
 // =====================================
 
 and and23 (cable[67], Cout, cable[50], cable[49]);
 and and24 (cable[68], B4, cable[50], U);
 and and25 (cable[69], Cout, V, cable[49]);
-and and26 (cable[70], D4, V, U);
+and and26 (cable[70], cable[79], V, U); // PARIDAD XOR
 
 or or7 (FLAG, cable[67], cable[68], cable[69], cable[70]);
-
-endmodule
-
-
-
 
 
 endmodule
