@@ -18,6 +18,9 @@ wire BX0, BX1, BX2, BX3;
 wire C1, C2, C3;
 wire M;
 wire S0, S1, S2, S3;
+wire MAX0, MAX1, MAX2, MAX3;
+wire B4;
+
 // XOR para invertir B cuando M=1
 xor xorb0 (BX0, B0, M);
 xor xorb1 (BX1, B1, M);
@@ -209,8 +212,6 @@ or or7 (FLAG, cable[67], cable[68], cable[69], cable[70]);
  // COMPARADOR MAYOR DE 4 BITS
  // =====================================
 
-wire MAX0, MAX1, MAX2, MAX3;
-wire B4;
 
 // INVERSORES DE B
 not notCompB3 (cable[81], B3);
