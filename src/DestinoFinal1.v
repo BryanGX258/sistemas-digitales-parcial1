@@ -1,6 +1,8 @@
-module DestinoFinal1 ( input A0, A1, A2, A3,
+module DestinoFinal1 ( 
+    input A0, A1, A2, A3,
     input B0, B1, B2, B3,
-    input M,              // M=0 suma, M=1 resta(inversion de las xor del sumador)
+    input M,   // M=0 suma, M=1 resta(inversion de las xor del sumador)
+    input A, B, C, D, // selector de operacion SUMA,RESTA,COMPARADOR, XOR
     output S0, S1, S2, S3, // (colocar decodificador pendiente)
     output Cout,
     output Y0, Y1, Y2, Y3, //salidas del mux 4x1
@@ -98,8 +100,7 @@ or  ors4    (S3, cable[36], cable[37], cable[38], cable[39]);
 
 
 module SISTEMA_MUX (
-    input A, B, C, D,
-
+    
     input A0, B0, C0, D0,
     input A1, B1, C1, D1,
     input A2, B2, C2, D2,
