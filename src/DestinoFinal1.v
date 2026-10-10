@@ -5,7 +5,10 @@ module DestinoFinal1 (
     output Cout,
     output Y0, Y1, Y2, Y3, //salidas del mux 4x1
     output FLAG, //carry mux
-    output U, V 
+    output U, V,
+    input CLK, EN, RESET,
+    output Q0, Q1, Q2, Q3,
+    output FLAG_Q 
     
 );
 
