@@ -8,7 +8,7 @@ module DestinoFinal1 (
     output Y0, Y1, Y2, Y3, //salidas del mux 4x1
     output FLAG, //carry mux
     output U, V, 
-    // ojo queda pendiente colocar un mux 4x1 el cual va elegir la salidas sm/res y una tabla de verdad el cual la controlara
+    
 );
 
 
